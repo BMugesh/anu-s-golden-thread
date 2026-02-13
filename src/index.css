@@ -1,54 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 40 33% 96%;
-    --foreground: 30 10% 15%;
+    --background: 40 20% 98%;
+    /* Ivory/Cream */
+    --foreground: 280 30% 20%;
+    /* Dark Purple/Plum */
 
-    --card: 38 30% 93%;
-    --card-foreground: 30 10% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 10% 20%;
 
-    --popover: 40 33% 96%;
-    --popover-foreground: 30 10% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 10% 20%;
 
-    --primary: 38 60% 55%;
-    --primary-foreground: 40 33% 96%;
+    --primary: 270 20% 40%;
+    /* Unobtrusive Lavender/Dusk */
+    --primary-foreground: 40 20% 98%;
 
-    --secondary: 260 20% 88%;
-    --secondary-foreground: 260 15% 30%;
+    --secondary: 40 30% 90%;
+    --secondary-foreground: 270 10% 20%;
 
-    --muted: 35 20% 90%;
-    --muted-foreground: 30 8% 50%;
+    --muted: 270 10% 90%;
+    --muted-foreground: 270 10% 50%;
 
-    --accent: 260 18% 82%;
-    --accent-foreground: 260 15% 25%;
+    --accent: 45 60% 80%;
+    /* Soft Gold */
+    --accent-foreground: 270 10% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 35 15% 85%;
-    --input: 35 15% 85%;
-    --ring: 38 60% 55%;
+    --border: 270 10% 90%;
+    --input: 270 10% 90%;
+    --ring: 270 20% 40%;
 
     --radius: 0.5rem;
+  }
 
-    --golden-glow: 42 80% 60%;
-    --warm-ivory: 40 33% 96%;
-    --soft-lavender: 260 20% 88%;
-    --deep-night: 30 15% 8%;
+  .dark {
+    --background: 270 20% 10%;
+    /* Deep Dusk */
+    --foreground: 40 20% 90%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --card: 270 20% 12%;
+    --card-foreground: 40 20% 90%;
+
+    --popover: 270 20% 12%;
+    --popover-foreground: 40 20% 90%;
+
+    --primary: 40 20% 90%;
+    --primary-foreground: 270 20% 10%;
+
+    --secondary: 270 20% 20%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 270 20% 20%;
+    --muted-foreground: 270 10% 60%;
+
+    --accent: 45 60% 50%;
+    /* Deep Gold */
+    --accent-foreground: 40 20% 90%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 270 20% 20%;
+    --input: 270 20% 20%;
+    --ring: 270 20% 40%;
   }
 }
 
@@ -58,102 +78,22 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased selection:bg-gold/30 selection:text-dusk;
     font-family: 'Inter', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
   }
 }
 
 @layer utilities {
-  .font-serif-display {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .font-body {
-    font-family: 'Inter', sans-serif;
-  }
-
-  .text-golden {
-    color: hsl(var(--golden-glow));
-  }
-
-  .bg-deep-night {
-    background-color: hsl(var(--deep-night));
-  }
-
-  .golden-glow-box {
-    box-shadow: 0 0 80px 20px hsl(var(--golden-glow) / 0.15),
-                0 0 120px 40px hsl(var(--golden-glow) / 0.08);
-  }
-
-  .film-grain {
-    position: relative;
-  }
-
-  .film-grain::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
-
-  .soft-vignette {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9998;
-    background: radial-gradient(ellipse at center, transparent 50%, hsl(var(--deep-night) / 0.08) 100%);
-  }
-
-  .warm-spotlight {
-    background: radial-gradient(ellipse at center, hsl(var(--golden-glow) / 0.06) 0%, transparent 70%);
-  }
-
-  .animate-gentle-pulse {
-    animation: gentle-pulse 3s ease-in-out infinite;
-  }
-}
-
-@keyframes cinematic-fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gentle-pulse {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes golden-reveal {
-  0% {
-    opacity: 0;
-    box-shadow: 0 0 0 0 hsl(42 80% 60% / 0);
-  }
-  100% {
-    opacity: 1;
-    box-shadow: 0 0 80px 20px hsl(42 80% 60% / 0.15),
-                0 0 120px 40px hsl(42 80% 60% / 0.08);
+  .text-balance {
+    text-wrap: balance;
   }
 }

@@ -19,10 +19,6 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        golden: "hsl(var(--golden-glow))",
-        ivory: "hsl(var(--warm-ivory))",
-        lavender: "hsl(var(--soft-lavender))",
-        night: "hsl(var(--deep-night))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -51,21 +47,30 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        // Custom emotional palette
+        ivory: "#2D1B3D",
+        lavender: {
+          soft: "#F3E5F5",
+          muted: "#E1BEE7",
+        },
+        gold: {
+          light: "#F4E09E",
+          DEFAULT: "#D4AF37",
+          glow: "rgba(212, 175, 55, 0.5)",
+        },
+        dusk: {
+          DEFAULT: "#2D283E",
+          deep: "#1A1625",
         },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        serif: ["Playfair Display", "serif"],
+        sans: ["Inter", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -76,21 +81,35 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "cinematic-fade": {
+        "background-pan": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "fade-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "golden-reveal": {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
+        "soft-pulse": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "cinematic-fade": "cinematic-fade 1.5s ease-out forwards",
-        "golden-reveal": "golden-reveal 2s ease-out forwards",
+        "background-pan": "background-pan 15s ease infinite",
+        "fade-in": "fade-in 1.5s ease-in-out forwards",
+        "fade-up": "fade-up 1.5s ease-out forwards",
+        "soft-pulse": "soft-pulse 4s ease-in-out infinite",
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
