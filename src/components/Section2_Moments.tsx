@@ -18,16 +18,16 @@ const Section2_Moments = () => {
     ];
 
     return (
-        <section ref={containerRef} className="min-h-[200vh] relative py-20 px-6">
+        <section ref={containerRef} className="min-h-[150vh] relative py-12 px-6">
             <div className="max-w-4xl mx-auto space-y-32">
 
                 {/* Intro with Christian Touch */}
-                <div className="min-h-[50vh] flex flex-col justify-center items-center text-center space-y-8">
+                <div className="min-h-[40vh] flex flex-col justify-center items-center text-center space-y-8">
                     <motion.p
                         initial={{ opacity: 0, filter: "blur(10px)" }}
                         whileInView={{ opacity: 1, filter: "blur(0px)" }}
                         viewport={{ once: true, margin: "-20%" }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="text-2xl md:text-3xl font-light text-foreground/80"
                     >
                         You know what&rsquo;s funny?
@@ -36,8 +36,8 @@ const Section2_Moments = () => {
                         initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
                         whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                         viewport={{ once: true, margin: "-20%" }}
-                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                        className="text-3xl md:text-5xl font-serif text-foreground"
+                        transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-xl md:text-5xl font-serif text-foreground"
                     >
                         In just six months, you became&hellip;
                     </motion.p>
@@ -48,17 +48,17 @@ const Section2_Moments = () => {
                     {items.map((text, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, filter: "blur(15px)", x: index % 2 === 0 ? -50 : 50, y: 20 }}
+                            initial={{ opacity: 0, filter: "blur(15px)", x: index % 2 === 0 ? -20 : 20, y: 20 }}
                             whileInView={{ opacity: 1, filter: "blur(0px)", x: 0, y: 0 }}
                             viewport={{ once: true, margin: "-20%" }}
-                            transition={{ duration: 2.2, ease: "easeOut", delay: index * 0.5 }}
+                            transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.15 }}
                             className={cn(
-                                "p-8 md:p-12 border border-foreground/10 rounded-lg bg-white/5 backdrop-blur-sm",
+                                "p-6 md:p-12 border border-foreground/10 rounded-lg bg-white/5 backdrop-blur-sm",
                                 index === 1 ? "md:ml-auto md:mr-0 max-w-xl" : "md:mr-auto md:ml-0 max-w-xl",
                                 "relative overflow-hidden"
                             )}
                         >
-                            <p className="text-xl md:text-3xl font-light text-foreground/90 relative z-10">
+                            <p className="text-lg md:text-3xl font-light text-foreground/90 relative z-10">
                                 {text}
                             </p>
                         </motion.div>
@@ -71,7 +71,7 @@ const Section2_Moments = () => {
                         initial={{ opacity: 0, filter: "blur(10px)" }}
                         whileInView={{ opacity: 1, filter: "blur(0px)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="space-y-6 max-w-2xl"
                     >
                         <p className="text-sm uppercase tracking-[0.3em] text-foreground/50 font-light">
@@ -82,40 +82,40 @@ const Section2_Moments = () => {
                         </p>
                     </motion.div>
 
-                    <div className="h-16"></div>
+                    <div className="h-8 md:h-12"></div>
 
                     <motion.div
                         initial={{ opacity: 0, filter: "blur(10px)" }}
                         whileInView={{ opacity: 1, filter: "blur(0px)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                        transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className="space-y-4"
                     >
                         <p className="text-lg md:text-2xl text-foreground/70">I might tease you.</p>
                         <p className="text-lg md:text-2xl text-foreground/70">I might act dramatic.</p>
                     </motion.div>
 
-                    <div className="h-16"></div>
+                    <div className="h-8 md:h-12"></div>
 
                     <motion.div
                         initial={{ opacity: 0, scale: 1.02, filter: "blur(15px)" }}
                         whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                         viewport={{ once: true, margin: "-10%" }}
-                        transition={{ duration: 2.5, ease: "easeOut" }}
+                        transition={{ duration: 2.0, ease: [0.22, 1, 0.36, 1] }}
                         className="relative"
                     >
                         <div className="absolute -inset-10 bg-gold/20 blur-3xl -z-10 rounded-full" />
-                        <p className="text-3xl md:text-5xl font-serif text-foreground mb-6">
+                        <p className="text-2xl md:text-5xl font-serif text-foreground mb-6">
                             But if anyone messes with you?
                         </p>
                         <motion.div
                             initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
                             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 2, delay: 0.8, ease: "easeOut" }}
+                            transition={{ duration: 1.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
                             className="relative overflow-hidden"
                         >
-                            <p className="text-2xl md:text-4xl text-gold font-light relative z-10">
+                            <p className="text-xl md:text-4xl text-gold font-light relative z-10">
                                 They&rsquo;ll meet the upgraded version of me.
                             </p>
                             {/* Golden Sweep Effect */}
@@ -131,7 +131,7 @@ const Section2_Moments = () => {
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 2, delay: 2 }}
+                            transition={{ duration: 1.6, delay: 1.5 }}
                             className="text-sm md:text-base text-foreground/50 mt-8 italic"
                         >
                             Because protecting you is a blessing I take seriously.

@@ -28,7 +28,7 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onComplete }) => {
         <AnimatePresence>
             {!readyToTransition && (
                 <motion.div
-                    className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
+                    className="fixed inset-0 z-50 flex items-center justify-center"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 2, ease: "easeInOut" }}
@@ -117,40 +117,68 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onComplete }) => {
                                     }}
                                     exit={{ opacity: 0, scale: 0.95 }}
                                 >
-                                    {/* Envelope body */}
-                                    <div className="relative w-[400px] h-[280px] bg-gradient-to-br from-[#f5f1e8] to-[#ebe5d9] rounded-sm shadow-2xl">
+                                    {/* Envelope body with richer shadow and texture */}
+                                    <div className="relative w-[90vw] max-w-[400px] h-[60vw] max-h-[280px] bg-[#fdfbf7] rounded-md shadow-[0_25px_60px_rgba(0,0,0,0.25)] border-2 border-[#e6dfd1]/80 transform transition-transform hover:scale-[1.02] duration-500">
+
+                                        {/* "Annoying Brother" Sticky Note - Responsive positioning */}
+                                        <motion.div
+                                            initial={{ rotate: -5, opacity: 0, scale: 0.8 }}
+                                            animate={{ rotate: -5, opacity: 1, scale: 1 }}
+                                            transition={{ delay: 1.5, type: "spring" }}
+                                            className="absolute -top-6 -right-2 md:-top-8 md:-right-8 w-24 h-24 md:w-28 md:h-28 bg-[#fff000] shadow-[4px_4px_10px_rgba(0,0,0,0.3)] flex items-center justify-center p-2 transform rotate-12 z-50"
+                                            style={{
+                                                boxShadow: "2px 4px 8px rgba(0,0,0,0.2)",
+                                                zIndex: 100
+                                            }}
+                                        >
+                                            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-3 bg-yellow-400/50 rotate-2" />
+                                            <p className="font-sans text-[10px] md:text-xs text-black leading-tight font-bold text-center">
+                                                OPEN IT ALREADY!!
+                                                <br />
+                                                <span className="font-normal text-[8px] md:text-[10px]">(please?)</span>
+                                            </p>
+                                        </motion.div>
+
                                         {/* Paper texture */}
                                         <div
-                                            className="absolute inset-0 opacity-[0.08] mix-blend-overlay rounded-sm"
+                                            className="absolute inset-0 opacity-[0.2] mix-blend-multiply rounded-md"
                                             style={{
-                                                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperTexture'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperTexture)'/%3E%3C/svg%3E")`
+                                                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
                                             }}
                                         />
 
                                         {/* Envelope flap */}
                                         <motion.div
-                                            className="absolute top-0 left-0 right-0 h-[140px] origin-top"
+                                            className="absolute top-0 left-0 right-0 h-[35vw] max-h-[140px] origin-top z-20"
                                             style={{
-                                                background: "linear-gradient(to bottom, #ebe5d9, #f5f1e8)",
-                                                clipPath: "polygon(0 0, 50% 60%, 100% 0)"
+                                                background: "linear-gradient(to bottom, #e6dfd1, #fdfbf7)",
+                                                clipPath: "polygon(0 0, 50% 60%, 100% 0)",
+                                                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.15))"
                                             }}
                                             animate={{
                                                 rotateX: envelopeOpened ? -180 : 0
                                             }}
                                             transition={{ duration: 2, ease: "easeInOut", delay: 0.3 }}
                                         >
-                                            {/* Wax seal */}
-                                            <motion.div
-                                                className="absolute top-[80px] left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-gold/60 to-gold/40 shadow-lg"
-                                                animate={{
-                                                    opacity: envelopeOpened ? 0 : 1,
-                                                    scale: envelopeOpened ? 0.8 : 1
-                                                }}
-                                                transition={{ duration: 1, ease: "easeOut" }}
-                                            >
-                                                <div className="absolute inset-2 rounded-full border border-gold/30" />
-                                                <div className="absolute inset-0 flex items-center justify-center text-xs text-ivory/60 font-serif">A</div>
-                                            </motion.div>
+                                        </motion.div>
+
+                                        {/* Wax seal - Red for contrast (Moved outside flap to avoid clipping) */}
+                                        <motion.div
+                                            className="absolute top-[20vw] md:top-[80px] left-1/2 -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full shadow-lg z-30 cursor-pointer group"
+                                            style={{
+                                                background: "radial-gradient(circle at 30% 30%, #e63946, #9e2a2b)",
+                                                boxShadow: "0 4px 8px rgba(0,0,0,0.3)"
+                                            }}
+                                            animate={{
+                                                opacity: envelopeOpened ? 0 : 1,
+                                                scale: envelopeOpened ? 0.8 : 1
+                                            }}
+                                            transition={{ duration: 1, ease: "easeOut" }}
+                                        >
+                                            <div className="absolute inset-1 rounded-full border border-white/20" />
+                                            <div className="absolute inset-0 flex items-center justify-center text-[10px] md:text-xs text-white/90 font-serif font-bold tracking-widest group-hover:scale-105 transition-transform">
+                                                ANU
+                                            </div>
                                         </motion.div>
                                     </div>
 
@@ -180,11 +208,12 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onComplete }) => {
                                     exit={{ y: 100, opacity: 0, filter: "blur(15px)" }}
                                     transition={{ duration: 2, ease: "easeOut" }}
                                 >
-                                    {/* Letter paper */}
-                                    <div className="relative w-[500px] min-h-[600px] bg-gradient-to-br from-ivory to-[#f5f1e8] rounded-sm shadow-2xl p-12">
+                                    {/* Letter paper - Blended with background */}
+                                    <div className="relative w-[90vw] max-w-[500px] min-h-[70vh] md:min-h-[600px] bg-[#fdfbf7]/60 backdrop-blur-md rounded-sm shadow-2xl p-6 md:p-12 overflow-y-auto max-h-[85vh] border border-white/20">
+
                                         {/* Paper texture */}
                                         <div
-                                            className="absolute inset-0 opacity-[0.05] mix-blend-overlay rounded-sm"
+                                            className="absolute inset-0 opacity-[0.15] mix-blend-multiply rounded-sm"
                                             style={{
                                                 backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperTexture'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperTexture)'/%3E%3C/svg%3E")`
                                             }}
@@ -193,8 +222,8 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onComplete }) => {
                                         {/* Shadow edges */}
                                         <div className="absolute inset-0 shadow-inner rounded-sm pointer-events-none" />
 
-                                        {/* Letter content */}
-                                        <div className="relative z-10 space-y-6 font-serif text-foreground/80">
+                                        {/* Letter content - High contrast */}
+                                        <div className="relative z-10 space-y-6 font-serif text-black/90">
                                             {[
                                                 { text: "My Anu,", delay: 0, glow: false },
                                                 { text: "", delay: 0.3, glow: false },

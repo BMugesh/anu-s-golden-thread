@@ -48,7 +48,7 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         // Custom emotional palette
-        ivory: "#2D1B3D",
+        ivory: "#FFFFF0",
         lavender: {
           soft: "#F3E5F5",
           muted: "#E1BEE7",

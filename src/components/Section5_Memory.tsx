@@ -120,13 +120,13 @@ const Section5_Memory = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{
-                                duration: 3.5,
-                                delay: 3.5,
-                                ease: "easeOut"
+                                duration: 2.8,
+                                delay: 2.8,
+                                ease: [0.22, 1, 0.36, 1]
                             }}
                         >
                             <motion.p
-                                className="text-3xl md:text-5xl font-serif text-ivory leading-tight drop-shadow-2xl"
+                                className="text-2xl md:text-5xl font-serif text-ivory leading-tight drop-shadow-2xl px-4"
                                 style={{
                                     textShadow: "0 4px 20px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)"
                                 }}
@@ -139,7 +139,7 @@ const Section5_Memory = () => {
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 0.4 }}
-                                transition={{ duration: 2.5, delay: 7 }}
+                                transition={{ duration: 2.0, delay: 5.5 }}
                                 className="mt-12 text-xs uppercase tracking-[0.3em] text-ivory/40"
                             >
                                 Memory

@@ -11,7 +11,7 @@ const Section4_Proud = () => {
     const duskOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
     return (
-        <section ref={containerRef} className="relative min-h-[150vh] flex flex-col items-center justify-center py-20 px-6">
+        <section ref={containerRef} className="relative min-h-[120vh] flex flex-col items-center justify-center py-12 px-6">
 
             <div className="max-w-3xl mx-auto text-center space-y-24 relative z-10">
 
@@ -20,7 +20,7 @@ const Section4_Proud = () => {
                     initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                     whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     viewport={{ once: true, margin: "-20%" }}
-                    transition={{ duration: 2, ease: "easeOut" }}
+                    transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     className="flex justify-center"
                 >
                     <div className="relative">
@@ -33,7 +33,7 @@ const Section4_Proud = () => {
                     initial={{ opacity: 0, filter: "blur(15px)", y: 30 }}
                     whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                     viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 1.8, ease: "easeOut" }}
+                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                     className="space-y-6"
                 >
                     <p className="text-xl md:text-3xl font-light text-foreground/90">
@@ -43,8 +43,8 @@ const Section4_Proud = () => {
                         initial={{ opacity: 0, filter: "blur(10px)" }}
                         whileInView={{ opacity: 1, filter: "blur(0px)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                        className="text-lg md:text-2xl text-foreground/70 italic"
+                        transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-base md:text-2xl text-foreground/70 italic"
                     >
                         You smile and say&mdash;
                     </motion.p>
@@ -55,8 +55,8 @@ const Section4_Proud = () => {
                     initial={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
                     whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 2.2, delay: 0.3, ease: "easeOut" }}
-                    className="bg-white/5 backdrop-blur-md border border-foreground/10 p-10 md:p-16 rounded-2xl relative overflow-hidden"
+                    transition={{ duration: 1.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="bg-white/5 backdrop-blur-md border border-foreground/10 p-6 md:p-16 rounded-2xl relative overflow-hidden"
                 >
                     {/* Subtle Handwritten Texture Overlay */}
                     <motion.div
@@ -71,8 +71,8 @@ const Section4_Proud = () => {
                     {/* Warm Background Overlay */}
                     <div className="absolute inset-0 bg-orange-500/5 mix-blend-overlay" />
 
-                    <span className="absolute -top-6 -left-4 text-6xl text-gold/20 font-serif">&ldquo;</span>
-                    <div className="space-y-4 text-2xl md:text-4xl font-serif text-foreground relative z-10">
+                    <span className="absolute -top-4 -left-2 md:-top-6 md:-left-4 text-4xl md:text-6xl text-gold/20 font-serif">&ldquo;</span>
+                    <div className="space-y-4 text-xl md:text-4xl font-serif text-foreground relative z-10">
                         <p>Yeah&hellip; he&rsquo;s annoying.</p>
                         <p>But he&rsquo;s <span className="text-gold relative inline-block">
                             my brother
@@ -80,7 +80,7 @@ const Section4_Proud = () => {
                             <span className="absolute -inset-4 bg-gold/30 blur-2xl rounded-full -z-10" />
                         </span>.</p>
                     </div>
-                    <span className="absolute -bottom-10 -right-4 text-6xl text-gold/20 font-serif rotate-180">&rdquo;</span>
+                    <span className="absolute -bottom-6 -right-2 md:-bottom-10 md:-right-4 text-4xl md:text-6xl text-gold/20 font-serif rotate-180">&rdquo;</span>
                 </motion.div>
 
                 {/* EMOTIONAL CLIMAX */}
@@ -88,7 +88,7 @@ const Section4_Proud = () => {
                     initial={{ opacity: 0, filter: "blur(15px)" }}
                     whileInView={{ opacity: 1, filter: "blur(0px)" }}
                     viewport={{ once: true }}
-                    transition={{ duration: 2.2, delay: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 1.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="pt-12 space-y-8 relative"
                 >
                     {/* Deepened Vignette */}
@@ -101,7 +101,7 @@ const Section4_Proud = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 3.5, delay: 0.5, ease: "easeInOut" }}
                     >
-                        <p className="text-2xl md:text-4xl font-light text-foreground/90 leading-relaxed">
+                        <p className="text-xl md:text-4xl font-light text-foreground/90 leading-relaxed">
                             Because I already feel lucky to call you my sister.
                         </p>
                     </motion.div>
@@ -137,7 +137,7 @@ const Section4_Proud = () => {
                         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 2.2, delay: 4, ease: "easeOut" }}
+                        transition={{ duration: 1.8, delay: 3.2, ease: [0.22, 1, 0.36, 1] }}
                         className="pt-8"
                     >
                         <p className="text-sm uppercase tracking-[0.3em] text-foreground/50 font-light mb-4">

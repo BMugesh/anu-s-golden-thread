@@ -12,7 +12,7 @@ const Section3_Core = () => {
     const bgTextX = useTransform(scrollYProgress, [0, 1], ["0%", "-6%"]);
 
     return (
-        <section ref={containerRef} className="relative min-h-[150vh] flex flex-col items-center justify-center py-20 px-6 overflow-hidden">
+        <section ref={containerRef} className="relative min-h-[120vh] flex flex-col items-center justify-center py-12 px-6 overflow-hidden">
 
             {/* Background Name Reveal - More Subtle */}
             <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none select-none z-0 opacity-[0.02]">
@@ -34,7 +34,7 @@ const Section3_Core = () => {
                     initial={{ opacity: 0, filter: "blur(15px)", y: 30 }}
                     whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                     viewport={{ once: true, margin: "-20%" }}
-                    transition={{ duration: 1.8, ease: "easeOut" }}
+                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                     className="space-y-6"
                 >
                     <p className="text-sm uppercase tracking-[0.3em] text-foreground/50 font-light">
@@ -50,8 +50,8 @@ const Section3_Core = () => {
                         initial={{ opacity: 0, filter: "blur(15px)", y: 30 }}
                         whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                         viewport={{ once: true, margin: "-20%" }}
-                        transition={{ duration: 1.8, ease: "easeOut" }}
-                        className="text-4xl md:text-6xl font-serif text-foreground"
+                        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-3xl md:text-6xl font-serif text-foreground"
                     >
                         You have this calm strength about you.
                     </motion.h2>
@@ -60,7 +60,7 @@ const Section3_Core = () => {
                         initial={{ opacity: 0, filter: "blur(10px)" }}
                         whileInView={{ opacity: 1, filter: "blur(0px)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                        transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className="text-xl md:text-2xl font-light text-foreground/70"
                     >
                         The kind that doesn&rsquo;t try to prove anything.
@@ -83,12 +83,12 @@ const Section3_Core = () => {
                         initial={{ opacity: 0, scale: 1, filter: "blur(15px)" }}
                         whileInView={{ opacity: 1, scale: 1.03, filter: "blur(0px)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 3, delay: 0.3, ease: "easeOut" }}
+                        transition={{ duration: 2.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                         className="relative inline-block"
                     >
                         {/* Soft Spotlight Behind "safe" */}
                         <span className="absolute -inset-12 bg-gold/15 blur-3xl rounded-full" />
-                        <p className="text-3xl md:text-5xl font-serif text-foreground relative z-10">
+                        <p className="text-2xl md:text-5xl font-serif text-foreground relative z-10">
                             Having you as my sister feels&hellip; <span className="text-gold font-medium relative">
                                 safe
                                 <span className="absolute -inset-4 bg-gold/20 blur-xl rounded-full -z-10" />
@@ -102,7 +102,7 @@ const Section3_Core = () => {
                     initial={{ opacity: 0, filter: "blur(15px)" }}
                     whileInView={{ opacity: 1, filter: "blur(0px)" }}
                     viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 2.5, delay: 0.5, ease: "easeOut" }}
+                    transition={{ duration: 2.0, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="pt-20 max-w-2xl mx-auto space-y-8"
                 >
                     {/* Split into phrases for line-by-line reveal */}
@@ -111,8 +111,8 @@ const Section3_Core = () => {
                             initial={{ opacity: 0, filter: "blur(10px)" }}
                             whileInView={{ opacity: 1, filter: "blur(0px)" }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: 0.8 }}
-                            className="text-xl md:text-3xl font-light text-foreground/80 leading-relaxed block"
+                            transition={{ duration: 1.2, delay: 0.6 }}
+                            className="text-lg md:text-3xl font-light text-foreground/80 leading-relaxed block"
                         >
                             It feels good knowing
                         </motion.span>
@@ -120,8 +120,8 @@ const Section3_Core = () => {
                             initial={{ opacity: 0, filter: "blur(10px)" }}
                             whileInView={{ opacity: 1, filter: "blur(0px)" }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: 1.2 }}
-                            className="text-xl md:text-3xl font-light text-foreground/80 leading-relaxed block"
+                            transition={{ duration: 1.2, delay: 1.0 }}
+                            className="text-lg md:text-3xl font-light text-foreground/80 leading-relaxed block"
                         >
                             there&rsquo;s someone out there
                         </motion.span>
@@ -129,8 +129,8 @@ const Section3_Core = () => {
                             initial={{ opacity: 0, filter: "blur(10px)" }}
                             whileInView={{ opacity: 1, filter: "blur(0px)" }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: 1.6 }}
-                            className="text-xl md:text-3xl font-light text-foreground/80 leading-relaxed block"
+                            transition={{ duration: 1.2, delay: 1.4 }}
+                            className="text-lg md:text-3xl font-light text-foreground/80 leading-relaxed block"
                         >
                             who understands me without judging me.
                         </motion.span>
@@ -140,7 +140,7 @@ const Section3_Core = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 2, delay: 2.2, ease: "easeOut" }}
+                        transition={{ duration: 1.6, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
                         className="pt-8 border-t border-foreground/10"
                     >
                         <p className="text-base md:text-lg text-foreground/60 italic">

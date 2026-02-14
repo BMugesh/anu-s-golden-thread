@@ -77,9 +77,9 @@ const Section1_Opening = () => {
                             }}
                             exit={{ opacity: 0, filter: "blur(10px)", transition: { duration: 2 } }}
                             transition={{ duration: 2.5, ease: "easeOut" }}
-                            className="text-6xl md:text-8xl font-serif text-foreground"
+                            className="text-4xl md:text-8xl font-serif text-foreground"
                         >
-                            Anu Akka.
+                            From your grateful brother.
                         </motion.h1>
                     </GoldenGlow>
                 )}
@@ -96,8 +96,8 @@ const Section1_Opening = () => {
                         <p className="text-xl md:text-3xl font-light text-foreground/90">
                             Okay first of all&hellip;
                         </p>
-                        <p className="text-2xl md:text-4xl font-serif text-foreground leading-relaxed">
-                            how did six months turn into something<br />that feels this important?
+                        <p className="text-xl md:text-4xl font-serif text-foreground leading-relaxed px-4">
+                            how did six months turn into something<br className="hidden md:block" /> that feels this important?
                         </p>
                     </motion.div>
                 )}
@@ -147,7 +147,7 @@ const Section1_Opening = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 2, delay: 1.2 }}
-                                className="text-3xl md:text-5xl font-serif mt-4 text-foreground"
+                                className="text-2xl md:text-5xl font-serif mt-4 text-foreground"
                             >
                                 you still chose to <span className="text-gold animate-soft-pulse relative inline-block">stay
                                     <span className="absolute inset-0 blur-lg bg-gold/30 rounded-full" />
@@ -172,7 +172,7 @@ const Section1_Opening = () => {
                                         ease: "easeInOut"
                                     }}
                                 >
-                                    <p className="text-lg md:text-xl font-light text-foreground/60 mt-12 pb-20">
+                                    <p className="text-base md:text-xl font-light text-foreground/60 mt-12 pb-20 px-4">
                                         And that means more than you think.
                                     </p>
                                 </motion.div>

@@ -24,13 +24,7 @@ const Section6_Final = () => {
             animate={{ scale: showPullback ? 0.98 : 1 }}
             transition={{ duration: 3, ease: "easeInOut" }}
         >
-            {/* Warm Near-Black Fade Overlay */}
-            <motion.div
-                className="absolute inset-0 bg-gradient-to-b from-dusk-deep to-dusk -z-10"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: showPullback ? 1 : 0 }}
-                transition={{ duration: 3, delay: 0.5 }}
-            />
+
 
             {/* Golden Glow Linger */}
             <motion.div
@@ -47,7 +41,7 @@ const Section6_Final = () => {
                     initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                     whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     viewport={{ once: true }}
-                    transition={{ duration: 2, ease: "easeOut" }}
+                    transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     className="flex justify-center mb-8"
                 >
                     <div className="relative">
@@ -62,8 +56,8 @@ const Section6_Final = () => {
                         initial={{ opacity: 0, scale: 0.98, filter: "blur(15px)" }}
                         whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 3.5, ease: "easeOut" }}
-                        className="text-4xl md:text-6xl font-serif text-foreground"
+                        transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-3xl md:text-6xl font-serif text-foreground"
                     >
                         Happy Valentine&rsquo;s Day, Anu Akka.
                     </motion.p>
@@ -73,7 +67,7 @@ const Section6_Final = () => {
                             initial={{ opacity: 0, filter: "blur(10px)" }}
                             whileInView={{ opacity: 1, filter: "blur(0px)" }}
                             viewport={{ once: true }}
-                            transition={{ duration: 2, delay: 2, ease: "easeOut" }}
+                            transition={{ duration: 1.6, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
                             className="text-xl md:text-2xl text-foreground/70 relative"
                         >
                             Not the couple version. The real one.
@@ -95,7 +89,7 @@ const Section6_Final = () => {
                             initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
                             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 2, ease: "easeOut" }}
+                            transition={{ duration: 1.4, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
                             className="text-xl md:text-3xl text-foreground/90 leading-relaxed"
                         >
                             The one that celebrates people who make life lighter,<br />
@@ -112,8 +106,8 @@ const Section6_Final = () => {
                             width: isInView ? "100%" : "0%",
                             filter: isInView ? "blur(0px)" : "blur(5px)"
                         }}
-                        transition={{ duration: 5, ease: "easeInOut", delay: 0.5 }}
-                        className="overflow-hidden whitespace-nowrap text-3xl md:text-5xl font-serif text-gold italic relative"
+                        transition={{ duration: 4.0, ease: "easeInOut", delay: 0.4 }}
+                        className="overflow-hidden whitespace-nowrap text-xl md:text-5xl font-serif text-gold italic relative"
                     >
                         Anu Akka... I&rsquo;m glad it&rsquo;s you.
                         <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-gold/50 animate-pulse" />
@@ -128,7 +122,7 @@ const Section6_Final = () => {
                         filter: isInView ? "blur(0px)" : "blur(15px)",
                         y: isInView ? 0 : 20
                     }}
-                    transition={{ duration: 2.5, delay: 6, ease: "easeOut" }}
+                    transition={{ duration: 2.0, delay: 4.5, ease: [0.22, 1, 0.36, 1] }}
                     className="pt-12 space-y-8"
                 >
                     <div className="border-t border-foreground/10 pt-8 space-y-6">
@@ -155,7 +149,7 @@ const Section6_Final = () => {
                         filter: isInView ? "blur(0px)" : "blur(10px)",
                         y: isInView ? 0 : 20
                     }}
-                    transition={{ duration: 3, delay: 11, ease: "easeOut" }}
+                    transition={{ duration: 2.4, delay: 8, ease: [0.22, 1, 0.36, 1] }}
                     className="pt-12 border-t border-foreground/10 w-full max-w-xs mx-auto"
                 >
                     <p className="text-sm md:text-base text-foreground/60">
