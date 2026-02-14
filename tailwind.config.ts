@@ -72,6 +72,30 @@ export default {
         serif: ["Playfair Display", "serif"],
         sans: ["Inter", "sans-serif"],
       },
+      fontSize: {
+        // Fluid typography using clamp()
+        'fluid-xs': 'clamp(0.75rem, 1.5vw, 0.875rem)',
+        'fluid-sm': 'clamp(0.875rem, 2vw, 1rem)',
+        'fluid-base': 'clamp(1rem, 2.5vw, 1.125rem)',
+        'fluid-lg': 'clamp(1.125rem, 3vw, 1.25rem)',
+        'fluid-xl': 'clamp(1.25rem, 3.5vw, 1.5rem)',
+        'fluid-2xl': 'clamp(1.5rem, 4vw, 2rem)',
+        'fluid-3xl': 'clamp(1.875rem, 5vw, 2.5rem)',
+        'fluid-4xl': 'clamp(2rem, 6vw, 3rem)',
+        'fluid-5xl': 'clamp(2.25rem, 7vw, 4rem)',
+        'fluid-6xl': 'clamp(2.5rem, 8vw, 5rem)',
+        'fluid-7xl': 'clamp(3rem, 10vw, 6rem)',
+        'fluid-8xl': 'clamp(3.5rem, 12vw, 7rem)',
+      },
+      spacing: {
+        // Fluid spacing
+        'fluid-xs': 'clamp(0.5rem, 2vw, 0.75rem)',
+        'fluid-sm': 'clamp(0.75rem, 3vw, 1rem)',
+        'fluid-md': 'clamp(1rem, 4vw, 1.5rem)',
+        'fluid-lg': 'clamp(1.5rem, 5vw, 2rem)',
+        'fluid-xl': 'clamp(2rem, 6vw, 3rem)',
+        'fluid-2xl': 'clamp(3rem, 8vw, 4rem)',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
