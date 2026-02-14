@@ -98,6 +98,26 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.8" },
         },
+        "camera-forward": {
+          "0%": { transform: "scale(1.03)", filter: "blur(8px)" },
+          "100%": { transform: "scale(1.0)", filter: "blur(0px)" }
+        },
+        "camera-pullback": {
+          "0%": { transform: "scale(1.0)" },
+          "100%": { transform: "scale(0.98)" }
+        },
+        "golden-sweep": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" }
+        },
+        "golden-pulse-slow": {
+          "0%, 100%": { transform: "scale(1.0)", opacity: "0.3" },
+          "50%": { transform: "scale(1.03)", opacity: "0.5" }
+        },
+        "drift-slow": {
+          "0%": { transform: "translateX(0) translateY(0)" },
+          "100%": { transform: "translateX(-10%) translateY(-5%)" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -106,6 +126,11 @@ export default {
         "fade-in": "fade-in 1.5s ease-in-out forwards",
         "fade-up": "fade-up 1.5s ease-out forwards",
         "soft-pulse": "soft-pulse 4s ease-in-out infinite",
+        "camera-forward": "camera-forward 3s ease-out forwards",
+        "camera-pullback": "camera-pullback 3s ease-in-out forwards",
+        "golden-sweep": "golden-sweep 2s ease-in-out",
+        "golden-pulse-slow": "golden-pulse-slow 4s ease-in-out infinite",
+        "drift-slow": "drift-slow 30s linear infinite"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

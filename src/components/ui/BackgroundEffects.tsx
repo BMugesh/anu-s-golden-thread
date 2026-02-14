@@ -89,12 +89,30 @@ export const BackgroundEffects = () => {
             {/* Dust Particles Canvas */}
             <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-            {/* Global Smooth Transition Layer */}
+            {/* Subtle "Anu Akka" Watermark - Barely Visible */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.02]">
+                <motion.div
+                    className="text-[15vh] font-serif text-lavender-muted whitespace-nowrap"
+                    animate={{
+                        x: [0, -100],
+                        y: [0, -50]
+                    }}
+                    transition={{
+                        duration: 30,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                >
+                    Anu Akka  Anu Akka  Anu Akka  Anu Akka
+                </motion.div>
+            </div>
+
+            {/* Global Smooth Transition Layer - Extended for Emotional Impact */}
             <motion.div
                 className="absolute inset-0 bg-dusk pointer-events-none"
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
+                initial={{ opacity: 1, filter: "blur(15px)" }}
+                animate={{ opacity: 0, filter: "blur(0px)" }}
+                transition={{ duration: 3, ease: "easeInOut" }}
             />
         </div>
     );

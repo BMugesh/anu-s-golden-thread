@@ -30,13 +30,13 @@ const Section5_Memory = () => {
         return () => unsubscribe();
     }, [scrollYProgress, isVisible]);
 
-    // Crossfade between images every 5 seconds
+    // Crossfade between images every 7 seconds (slower for appreciation)
     useEffect(() => {
         if (!isVisible || images.length <= 1) return;
 
         const interval = setInterval(() => {
             setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        }, 5000);
+        }, 7000);
 
         return () => clearInterval(interval);
     }, [isVisible, images.length]);
@@ -60,17 +60,19 @@ const Section5_Memory = () => {
                     {isVisible && (
                         <motion.div
                             key={currentImageIndex}
-                            initial={{ opacity: 0, filter: "blur(15px)", scale: 1.05 }}
+                            initial={{ opacity: 0, filter: "blur(15px)", scale: 1.05, y: 10 }}
                             animate={{
                                 opacity: 0.6,
                                 filter: "blur(0px)",
                                 scale: 1.0,
+                                y: -5  // Gentle upward parallax
                             }}
                             exit={{ opacity: 0 }}
                             transition={{
-                                opacity: { duration: 1.8, ease: "easeOut" },
-                                filter: { duration: 1.8, ease: "easeOut" },
-                                scale: { duration: 2.5, ease: "easeOut" },
+                                opacity: { duration: 2.8, ease: "easeOut" },
+                                filter: { duration: 2.8, ease: "easeOut" },
+                                scale: { duration: 4, ease: "easeOut" },
+                                y: { duration: 4, ease: "easeOut" }
                             }}
                             className="absolute inset-0"
                         >
@@ -84,8 +86,8 @@ const Section5_Memory = () => {
                                 }}
                             >
                                 {/* Cinematic Filter Overlays */}
-                                {/* Warm tone overlay */}
-                                <div className="absolute inset-0 bg-orange-400/8 mix-blend-overlay" />
+                                {/* Warmer tone overlay - Increased */}
+                                <div className="absolute inset-0 bg-orange-400/12 mix-blend-overlay" />
 
                                 {/* Slight exposure lift */}
                                 <div className="absolute inset-0 bg-white/5" />
@@ -118,8 +120,8 @@ const Section5_Memory = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{
-                                duration: 2,
-                                delay: 2.2,
+                                duration: 3.5,
+                                delay: 3.5,
                                 ease: "easeOut"
                             }}
                         >
@@ -137,7 +139,7 @@ const Section5_Memory = () => {
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 0.4 }}
-                                transition={{ duration: 2, delay: 5 }}
+                                transition={{ duration: 2.5, delay: 7 }}
                                 className="mt-12 text-xs uppercase tracking-[0.3em] text-ivory/40"
                             >
                                 Memory

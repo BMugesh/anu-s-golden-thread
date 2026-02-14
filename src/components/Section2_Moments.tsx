@@ -48,17 +48,16 @@ const Section2_Moments = () => {
                     {items.map((text, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, filter: "blur(15px)", x: index % 2 === 0 ? -50 : 50 }}
-                            whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+                            initial={{ opacity: 0, filter: "blur(15px)", x: index % 2 === 0 ? -50 : 50, y: 20 }}
+                            whileInView={{ opacity: 1, filter: "blur(0px)", x: 0, y: 0 }}
                             viewport={{ once: true, margin: "-20%" }}
-                            transition={{ duration: 1.5, ease: "easeOut" }}
+                            transition={{ duration: 2.2, ease: "easeOut", delay: index * 0.5 }}
                             className={cn(
                                 "p-8 md:p-12 border border-foreground/10 rounded-lg bg-white/5 backdrop-blur-sm",
                                 index === 1 ? "md:ml-auto md:mr-0 max-w-xl" : "md:mr-auto md:ml-0 max-w-xl",
-                                "relative overflow-hidden group hover:border-foreground/20 transition-colors duration-500"
+                                "relative overflow-hidden"
                             )}
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <p className="text-xl md:text-3xl font-light text-foreground/90 relative z-10">
                                 {text}
                             </p>
@@ -99,30 +98,40 @@ const Section2_Moments = () => {
                     <div className="h-16"></div>
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, filter: "blur(15px)" }}
+                        initial={{ opacity: 0, scale: 1.02, filter: "blur(15px)" }}
                         whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                         viewport={{ once: true, margin: "-10%" }}
-                        transition={{ duration: 2, ease: "easeOut" }}
+                        transition={{ duration: 2.5, ease: "easeOut" }}
                         className="relative"
                     >
                         <div className="absolute -inset-10 bg-gold/20 blur-3xl -z-10 rounded-full" />
                         <p className="text-3xl md:text-5xl font-serif text-foreground mb-6">
                             But if anyone messes with you?
                         </p>
-                        <motion.p
+                        <motion.div
                             initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
                             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
-                            className="text-2xl md:text-4xl text-gold font-light"
+                            transition={{ duration: 2, delay: 0.8, ease: "easeOut" }}
+                            className="relative overflow-hidden"
                         >
-                            They&rsquo;ll meet the upgraded version of me.
-                        </motion.p>
+                            <p className="text-2xl md:text-4xl text-gold font-light relative z-10">
+                                They&rsquo;ll meet the upgraded version of me.
+                            </p>
+                            {/* Golden Sweep Effect */}
+                            <motion.div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/20 to-transparent -z-10"
+                                initial={{ x: "-100%" }}
+                                whileInView={{ x: "100%" }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 2, delay: 1.2, ease: "easeInOut" }}
+                            />
+                        </motion.div>
                         <motion.p
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: 1.5 }}
+                            transition={{ duration: 2, delay: 2 }}
                             className="text-sm md:text-base text-foreground/50 mt-8 italic"
                         >
                             Because protecting you is a blessing I take seriously.
