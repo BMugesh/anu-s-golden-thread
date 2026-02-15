@@ -1,162 +1,169 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import FloatingParticles from "./ui/FloatingParticles";
+import BackgroundAudio from "./ui/BackgroundAudio";
 
-const Section5_Memory = () => {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
-    const containerRef = useRef(null);
+// Image Data with URL encoding for safety
+const memories = [
+    {
+        src: "/Images/The%20Beginning.jpeg",
+        title: "The Beginning",
+        text: [
+            "You were always there.",
+            "Even before I understood what that meant."
+        ],
+    },
+    {
+        src: "/Images/The%20Silent%20Protector.jpeg",
+        title: "The Silent Protector",
+        text: [
+            "You protected me in ways I never noticed back then.",
+            "But I see it now."
+        ],
+    },
+    {
+        src: "/Images/The%20Guide.jpeg",
+        title: "The Guide",
+        text: [
+            "I learned more from watching you",
+            "than from being told what to do."
+        ],
+    },
+    {
+        src: "/Images/The%20Strength.jpeg",
+        title: "The Strength",
+        text: [
+            "You carried responsibilities quietly.",
+            "You never asked for applause."
+        ],
+        fit: "contain"
+    },
+    {
+        src: "/Images/The%20Gratitude.jpeg",
+        title: "The Gratitude",
+        text: [
+            "If I’ve grown into someone stronger,",
+            "it’s because I had you ahead of me.",
+            "And I’m proud to be your brother."
+        ],
+        isFinal: true
+    },
+];
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"],
+const MemorySection = ({ memory, index, targetRef }: { memory: any, index: number, targetRef: React.RefObject<HTMLDivElement> }) => {
+    // Use a local ref for each section to track its position in viewport
+    const sectionRef = useRef(null);
+    const { scrollYProgress: sectionProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
     });
 
-    // Images from public/Images folder - All 5 photos
-    const images = [
-        "/Images/WhatsApp Image 2026-02-13 at 11.32.57 AM.jpeg",
-        "/Images/WhatsApp Image 2026-02-13 at 11.32.57 AM (1).jpeg",
-        "/Images/WhatsApp Image 2026-02-13 at 11.32.58 AM.jpeg",
-        "/Images/WhatsApp Image 2026-02-13 at 11.35.55 AM.jpeg",
-        "/Images/WhatsApp Image 2026-02-13 at 11.35.55 AM (1).jpeg",
-    ];
+    // Visual Effects
+    const y = useTransform(sectionProgress, [0, 1], ["-10%", "10%"]); // Parallax
 
-    // Trigger visibility when scrolled into view
-    useEffect(() => {
-        const unsubscribe = scrollYProgress.on("change", (latest) => {
-            if (latest > 0.3 && !isVisible) {
-                setIsVisible(true);
-            }
-        });
-        return () => unsubscribe();
-    }, [scrollYProgress, isVisible]);
+    // Adjusted opacity to ensure images stay visible longer, especially the final one
+    const opacity = useTransform(
+        sectionProgress,
+        [0.05, 0.2, 0.8, 1],
+        [0, 1, 1, 0]
+    );
 
-    // Crossfade between images every 7 seconds (slower for appreciation)
-    useEffect(() => {
-        if (!isVisible || images.length <= 1) return;
+    const scale = useTransform(sectionProgress, [0.1, 0.9], [1.0, 1.1]); // Ken Burns Zoom
+    const blur = useTransform(sectionProgress, [0.1, 0.3, 0.8, 1], ["10px", "0px", "0px", "10px"]); // Blur to clear
 
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        }, 7000);
-
-        return () => clearInterval(interval);
-    }, [isVisible, images.length]);
-
-    const darkOverlayOpacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 0.2]);
+    const isContain = memory.fit === "contain";
 
     return (
         <section
-            ref={containerRef}
-            className="relative min-h-screen flex flex-col items-center justify-center py-20 px-6 snap-center overflow-hidden"
+            ref={sectionRef}
+            className="relative h-screen w-full overflow-hidden sticky top-0 snap-center"
+            style={{ zIndex: index + 1 }} // Verify stacking order
         >
-            {/* Darkening Overlay */}
+            {/* Background Image Layer */}
             <motion.div
-                style={{ opacity: darkOverlayOpacity }}
-                className="absolute inset-0 bg-dusk z-0"
-            />
+                style={{ y, scale, filter: `blur(${blur})`, opacity }}
+                className="absolute inset-0 w-full h-full z-0"
+            >
+                {/* Blurred Backdrop for Contain Mode */}
+                {isContain && (
+                    <div
+                        className="absolute inset-0 bg-cover bg-center blur-3xl opacity-50 scale-110"
+                        style={{ backgroundImage: `url('${memory.src}')` }}
+                    />
+                )}
 
-            {/* Image Container with Cinematic Filter */}
-            <div className="absolute inset-0 z-0">
-                <AnimatePresence mode="sync">
-                    {isVisible && (
-                        <motion.div
-                            key={currentImageIndex}
-                            initial={{ opacity: 0, filter: "blur(15px)", scale: 1.05, y: 10 }}
-                            animate={{
-                                opacity: 0.6,
-                                filter: "blur(0px)",
-                                scale: 1.0,
-                                y: -5  // Gentle upward parallax
-                            }}
-                            exit={{ opacity: 0 }}
-                            transition={{
-                                opacity: { duration: 2.8, ease: "easeOut" },
-                                filter: { duration: 2.8, ease: "easeOut" },
-                                scale: { duration: 4, ease: "easeOut" },
-                                y: { duration: 4, ease: "easeOut" }
-                            }}
-                            className="absolute inset-0"
-                        >
-                            {/* Cinematic Image with Filters */}
-                            <div
-                                className="w-full h-full bg-cover bg-center relative"
-                                style={{
-                                    backgroundImage: `url('${images[currentImageIndex]}')`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                }}
+                <div
+                    className={`absolute inset-0 bg-center ${isContain ? 'bg-contain bg-no-repeat' : 'bg-cover'}`}
+                    style={{ backgroundImage: `url('${memory.src}')` }}
+                />
+
+                {/* Golden Hour Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-orange-500/10 mix-blend-overlay" /> {/* Warmth */}
+                <div className="absolute inset-0 bg-black/20" /> {/* Dimmer */}
+            </motion.div>
+
+            {/* Floating Particles/Dust */}
+            <FloatingParticles />
+
+            {/* Text Overlay - Static While In View */}
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center p-6 md:p-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }} // Triggers once when 30% visible
+                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+                >
+                    {memory.text.map((line: string, i: number) => (
+                        <React.Fragment key={i}>
+                            <p
+                                className={`
+                    font-serif text-ivory drop-shadow-2xl leading-relaxed
+                    ${memory.isFinal && i === memory.text.length - 1
+                                        ? "text-3xl md:text-5xl mt-6 text-gold font-medium"
+                                        : "text-xl md:text-4xl text-white/90"
+                                    }
+                  `}
+                                style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}
                             >
-                                {/* Cinematic Filter Overlays */}
-                                {/* Warmer tone overlay - Increased */}
-                                <div className="absolute inset-0 bg-orange-400/12 mix-blend-overlay" />
-
-                                {/* Slight exposure lift */}
-                                <div className="absolute inset-0 bg-white/5" />
-
-                                {/* Subtle vignette */}
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(26,22,37,0.3)_100%)]" />
-
-                                {/* Film grain overlay */}
-                                <div
-                                    className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
-                                    style={{
-                                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-                                    }}
-                                />
-
-                                {/* Slight desaturation via reduced saturation overlay */}
-                                <div className="absolute inset-0 bg-gray-500/5 mix-blend-saturation" />
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                                {line}
+                            </p>
+                            {i < memory.text.length - 1 && <div className="h-4 md:h-8" />}
+                        </React.Fragment>
+                    ))}
+                </motion.div>
             </div>
+        </section>
+    );
+};
 
-            {/* Text Overlay */}
-            <div className="relative z-10 max-w-4xl mx-auto text-center">
-                <AnimatePresence>
-                    {isVisible && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{
-                                duration: 2.8,
-                                delay: 2.8,
-                                ease: [0.22, 1, 0.36, 1]
-                            }}
-                        >
-                            <motion.p
-                                className="text-2xl md:text-5xl font-serif text-ivory leading-tight drop-shadow-2xl px-4"
-                                style={{
-                                    textShadow: "0 4px 20px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)"
-                                }}
-                            >
-                                &ldquo;Some bonds don&rsquo;t need years.
-                                <br />
-                                They just need <span className="text-gold">honesty</span>.&rdquo;
-                            </motion.p>
 
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 0.4 }}
-                                transition={{ duration: 2.0, delay: 5.5 }}
-                                className="mt-12 text-xs uppercase tracking-[0.3em] text-ivory/40"
-                            >
-                                Memory
-                            </motion.p>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
+const Section5_Memory = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
 
-            {/* Gentle fade to background at section end */}
-            <motion.div
-                className="absolute inset-0 bg-background -z-10 pointer-events-none"
+    return (
+        <div ref={containerRef} className="relative bg-[#0a0908] z-30">
+            <BackgroundAudio />
+
+            {/* Film Grain Overall Overlay */}
+            <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.07] mix-blend-overlay"
                 style={{
-                    opacity: useTransform(scrollYProgress, [0.7, 0.95], [0, 1])
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
                 }}
             />
-        </section>
+
+            {memories.map((memory, index) => (
+                <MemorySection
+                    key={index}
+                    memory={memory}
+                    index={index}
+                    targetRef={containerRef}
+                />
+            ))}
+
+            {/* Final Spacer to allow smooth exit */}
+            <div className="h-[20vh] bg-[#0a0908]" />
+        </div>
     );
 };
 
