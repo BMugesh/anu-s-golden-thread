@@ -94,8 +94,7 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onComplete }) => {
                         className="relative z-10"
                         initial={{ scale: 1 }}
                         animate={{
-                            scale: envelopeOpened ? 1.03 : 1,
-                            y: letterRevealed ? -50 : 0
+                            scale: envelopeOpened ? 1.03 : 1
                         }}
                         transition={{ duration: 2, ease: "easeOut" }}
                     >
