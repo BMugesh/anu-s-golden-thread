@@ -12,6 +12,7 @@ const memories = [
             "You were always there.",
             "Even before I understood what that meant."
         ],
+        fit: "contain"
     },
     {
         src: "/Images/The%20Silent%20Protector.jpeg",
